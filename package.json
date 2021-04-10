@@ -1,0 +1,25 @@
+{
+  "name": "com.appstoreinfo.sese",
+  "version": "0.0.1",
+  "description": "This plugin retrieves app update information on Android and IOS",
+  "cordova": {
+    "id": "com.appstoreinfo.sese",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sesetonye/appstoreinfo.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "sese",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sesetonye/appstoreinfo/issues"
+  },
+  "homepage": "https://github.com/sesetonye/appstoreinfo#readme"
+}
