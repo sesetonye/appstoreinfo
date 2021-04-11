@@ -3,6 +3,7 @@ package cordova.plugin.cordovainappupdte;
 import android.content.Context;
 import android.content.IntentSender;
 
+import android.util.Log;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
@@ -15,7 +16,7 @@ import com.google.android.play.core.tasks.Task;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
-import org.apache.cordova.LOG;
+//import org.apache.cordova.LOG;
 
 
 import org.json.JSONArray;
@@ -28,15 +29,15 @@ public class AppStoreInfo extends CordovaPlugin {
 
     @Override
     public void pluginInitialize(){
-        LOG.i("AppStoreInfo inialising");
+        //LOG.i("AppStoreInfo inialising");
     }
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
-        LOG.i("AppStoreInfo Executing");
+        //Log.i("AppStoreInfo Executing");
         if (action.equals("coolMethod")) {
-            LOG.i("Cool Method Executing");
+           // Log.i("Cool Method Executing");
 
             //String message = args.getString(0);
             int arg1 = args.getInt(0);
@@ -55,7 +56,7 @@ public class AppStoreInfo extends CordovaPlugin {
         Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
 
         if (action.equals("appInfo")) {
-            LOG.i("appInfo Method Executing");
+            //LOG.i("appInfo Method Executing");
             appUpdateInfoTask.addOnSuccessListener(
                 appUpdateInfo -> {
                     //this.appUpdateInfo = appUpdateInfo;
