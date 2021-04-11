@@ -60,7 +60,7 @@ public class AppStoreInfo extends CordovaPlugin {
                         response.put("currentVersion", String.valueOf(pInfo.versionCode));
                         response.put("availableVersion", String.valueOf(appUpdateInfo.availableVersionCode()));
                         response.put("updateAvailability", appUpdateInfo.updateAvailability());
-                        response.put("updatePriority", appUpdateInfo.updatePriority());
+                        //response.put("updatePriority", appUpdateInfo.updatePriority());
                         response.put("immediateUpdateAllowed", appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE));
                         response.put("flexibleUpdateAllowed", appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE));
                         callbackContext.success(response);
