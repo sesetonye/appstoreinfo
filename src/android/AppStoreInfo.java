@@ -8,6 +8,7 @@ import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
 import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.Task;
 
 import org.apache.cordova.CallbackContext;
@@ -59,7 +60,7 @@ public class AppStoreInfo extends CordovaPlugin {
                         response.put("currentVersion", String.valueOf(pInfo.versionCode));
                         response.put("availableVersion", String.valueOf(appUpdateInfo.availableVersionCode()));
                         response.put("updateAvailability", appUpdateInfo.updateAvailability());
-                        //response.put("updatePriority", appUpdateInfo.updatePriority());
+                        response.put("updatePriority", appUpdateInfo.updatePriority());
                         response.put("immediateUpdateAllowed", appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE));
                         response.put("flexibleUpdateAllowed", appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE));
                         callbackContext.success(response);
