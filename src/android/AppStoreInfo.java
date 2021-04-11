@@ -3,6 +3,9 @@ package cordova.plugin.cordovainappupdte;
 import android.content.Context;
 import android.content.IntentSender;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
