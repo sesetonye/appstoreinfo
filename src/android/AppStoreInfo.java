@@ -23,6 +23,19 @@ public class AppStoreInfo extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
+        if (action.equals("coolMethod")) {
+
+            //String message = args.getString(0);
+            int arg1 = args.getInt(0);
+            int arg2 = args.getInt(1);
+
+            int result = arg1 + arg2;
+
+            callbackContext.success("Result: " +result);
+
+            return true;
+        }
+
         Context currentContext = (cordova.getActivity()).getBaseContext();
         AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(currentContext);
 
@@ -62,19 +75,6 @@ public class AppStoreInfo extends CordovaPlugin {
         }
 
 
-        if (action.equals("coolMethod")) {
-
-            //String message = args.getString(0);
-            int arg1 = args.getInt(0);
-            int arg2 = args.getInt(1);
-
-            int result = arg1 + arg2;
-
-            callbackContext.success("Result: " +result);
-
-            this.coolMethod(String.valueOf(result), callbackContext);
-            return true;
-        }
         return false;
     }
 
