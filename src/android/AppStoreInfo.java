@@ -1,4 +1,4 @@
-package cordova.plugin.cordovainappupdte;
+package com.appstoreinfo.sese;
 
 import android.content.Context;
 import android.content.IntentSender;
