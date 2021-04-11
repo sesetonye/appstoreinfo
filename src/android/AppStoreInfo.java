@@ -1,6 +1,8 @@
 package cordova.plugin.cordovainappupdte;
 
 import android.content.Context;
+import android.content.IntentSender;
+
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
@@ -13,6 +15,7 @@ import com.google.android.play.core.tasks.Task;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
