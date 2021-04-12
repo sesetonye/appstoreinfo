@@ -49,8 +49,8 @@ public class AppStoreInfo extends CordovaPlugin {
             return true;
         }
 
-        //Context currentContext = (cordova.getActivity()).getBaseContext();
-        AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(this.getContext());
+        Context currentContext = (cordova.getActivity()).getBaseContext();
+        AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(currentContext);
 
         Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
 
