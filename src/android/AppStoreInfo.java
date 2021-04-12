@@ -49,8 +49,8 @@ public class AppStoreInfo extends CordovaPlugin {
             return true;
         }
 
-        Context currentContext = (cordova.getActivity()).getBaseContext();
-        AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(currentContext);
+        //Context currentContext = (cordova.getActivity()).getBaseContext();
+        AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(this.getContext());
 
         Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
 
@@ -69,10 +69,10 @@ public class AppStoreInfo extends CordovaPlugin {
                     }
                     try {
                         JSONObject response = new JSONObject();
-                        response.put("currentVersion", String.valueOf(pInfo.versionCode));
+                        response.put("installedVersion", String.valueOf(pInfo.versionCode));
                         response.put("availableVersion", String.valueOf(appUpdateInfo.availableVersionCode()));
                         response.put("updateAvailability", appUpdateInfo.updateAvailability());
-                        //response.put("updatePriority", appUpdateInfo.updatePriority());
+                        response.put("packageName", appUpdateInfo.packageName());
                         response.put("immediateUpdateAllowed", appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE));
                         response.put("flexibleUpdateAllowed", appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE));
                         callbackContext.success(response);
