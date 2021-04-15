@@ -10,9 +10,16 @@
                 <param name="android-package" value="com.appstoreinfo.sese.AppStoreInfo" />
             </feature>
         </config-file>
-        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <config-file parent="/*" target="AndroidManifest.xml" />
         <source-file src="src/android/AppStoreInfo.java" target-dir="src/com/appstoreinfo/sese/AppStoreInfo" />
-
         <framework custom="true" src="src/android/android-play-core.gradle" type="gradleReference" />
+    </platform>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="AppStoreInfo">
+                <param name="ios-package" value="AppStoreInfo" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/AppStoreInfo.m" />
     </platform>
 </plugin>

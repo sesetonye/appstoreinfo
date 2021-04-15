@@ -38,13 +38,13 @@ public class AppStoreInfo extends CordovaPlugin {
         if (action.equals("coolMethod")) {
            // Log.i("Cool Method Executing");
 
-            //String message = args.getString(0);
-            int arg1 = args.getInt(0);
-            int arg2 = args.getInt(1);
+            String message = args.getString(0);
+            // int arg1 = args.getInt(0);
+            // int arg2 = args.getInt(1);
 
-            int result = arg1 + arg2;
+            // int result = arg1 + arg2;
 
-            callbackContext.success("Result: " +result);
+            callbackContext.success("Result: " +message);
 
             return true;
         }
