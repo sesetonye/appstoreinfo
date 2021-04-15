@@ -1,5 +1,5 @@
 /********* AppStoreInfo.m Cordova Plugin Implementation *******/
-#import "AppUpdate.h"
+#import "AppStoreInfo.h"
 #import "AppVersionCodeModel.h"
 #import "ConvertVersion.h"
 #import <Cordova/CDV.h>
