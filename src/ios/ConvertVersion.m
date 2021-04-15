@@ -7,7 +7,23 @@
         return 0;
     }
     NSArray *versionArray = [versionNumber componentsSeparatedByString:@"."];
-    int versionCode = 1000 * versionArray[0] + 100 * versionArray[1] + versionArray[2] ;
+    NSString* major = [versionArray objectAtIndex:0];
+    NSString* minor = [versionArray objectAtIndex:1];
+    NSString* build = [versionArray objectAtIndex:2];
+    
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+    
+    NSNumber *majorCode = [f numberFromString:major];
+   
+   
+    NSNumber *minorCode = [f numberFromString:minor];
+    
+     NSNumber *buildCode = [f numberFromString:build];
+
+    
+    
+    int versionCode = ([majorCode intValue] * 1000 ) + ([minorCode intValue] * 100) + ([buildCode intValue]);
     return versionCode;
 }
 
