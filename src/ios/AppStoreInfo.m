@@ -2,7 +2,7 @@
 #import "AppStoreInfo.h"
 #import "AppVersionCodeModel.h"
 #import "ConvertVersion.h"
-#import <Cordova/CDV.h>
+// #import <Cordova/CDV.h>
 
 
 @implementation AppStoreInfo
@@ -27,7 +27,7 @@
      NSDictionary* infoDictionary = [[NSBundle mainBundle] infoDictionary];
           //NSString* appID = infoDictionary[@"CFBundleIdentifier"];
            NSString* appID = @"1516965769";
-          NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?bundleId=%@", appID]];
+          NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@", appID]];
           NSData* data = [NSData dataWithContentsOfURL:url];
           NSDictionary* lookup = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
           NSString* appStoreVersion = NULL;

@@ -20,6 +20,7 @@
                 <param name="ios-package" value="AppStoreInfo" />
             </feature>
         </config-file>
+        <header-file src="src/ios/AppStoreInfo.h" />
         <source-file src="src/ios/AppStoreInfo.m" />
     </platform>
 </plugin>
