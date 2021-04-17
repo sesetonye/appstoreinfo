@@ -39,23 +39,22 @@ public class AppStoreInfo extends CordovaPlugin {
            // Log.i("Cool Method Executing");
 
             String message = args.getString(0);
-            // int arg1 = args.getInt(0);
-            // int arg2 = args.getInt(1);
-
-            // int result = arg1 + arg2;
 
             callbackContext.success("Result: " +message);
 
             return true;
         }
 
-        Context currentContext = (cordova.getActivity()).getBaseContext();
-        AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(currentContext);
-
-        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
 
         if (action.equals("appInfo")) {
-            //LOG.i("appInfo Method Executing");
+
+            try{
+            Context currentContext = (cordova.getActivity()).getBaseContext();
+            AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(currentContext);
+
+            Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+
+
             appUpdateInfoTask.addOnSuccessListener(
                 appUpdateInfo -> {
                     //this.appUpdateInfo = appUpdateInfo;
@@ -85,6 +84,11 @@ public class AppStoreInfo extends CordovaPlugin {
                 }
             );
             return true;
+            }
+            catch (Exception e)
+            {
+                callbackContext.success(e.getMessage());
+            }
         }
 
 
