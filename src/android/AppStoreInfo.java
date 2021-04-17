@@ -21,13 +21,14 @@ import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 /**
  * This class echoes a string called from JavaScript.
  */
 public class AppStoreInfo extends CordovaPlugin {
 
     @Override
-    public void pluginInitialize(){
+    public void pluginInitialize() {
         //LOG.i("AppStoreInfo inialising");
     }
 
@@ -36,11 +37,11 @@ public class AppStoreInfo extends CordovaPlugin {
 
         //Log.i("AppStoreInfo Executing");
         if (action.equals("coolMethod")) {
-           // Log.i("Cool Method Executing");
+            // Log.i("Cool Method Executing");
 
             String message = args.getString(0);
 
-            callbackContext.success("Result: " +message);
+            callbackContext.success("Result: " + message);
 
             return true;
         }
@@ -48,46 +49,43 @@ public class AppStoreInfo extends CordovaPlugin {
 
         if (action.equals("appInfo")) {
 
-            try{
-            Context currentContext = (cordova.getActivity()).getBaseContext();
-            AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(currentContext);
+            try {
+                
+                Context currentContext = (cordova.getActivity()).getBaseContext();
+                AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(currentContext);
 
-            Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+                Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
 
 
-            appUpdateInfoTask.addOnSuccessListener(
-                appUpdateInfo -> {
-                    //this.appUpdateInfo = appUpdateInfo;
-                    PackageInfo pInfo = null;
-                    try {
-                        pInfo = this.getPackageInfo();
-                    }
-                    catch (PackageManager.NameNotFoundException e) {
-                        callbackContext.success("Unable to get App Info");
-                        return;
-                    }
-                    try {
-                        JSONObject response = new JSONObject();
-                        response.put("installedVersion", String.valueOf(pInfo.versionCode));
-                        response.put("availableVersion", String.valueOf(appUpdateInfo.availableVersionCode()));
-                        response.put("updateAvailability", appUpdateInfo.updateAvailability());
-                        response.put("packageName", appUpdateInfo.packageName());
-                        response.put("immediateUpdateAllowed", appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE));
-                        response.put("flexibleUpdateAllowed", appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE));
-                        callbackContext.success(response);
-                    }
-                    catch(JSONException e){
-                        callbackContext.success(e.getMessage());
-                    }
+                appUpdateInfoTask.addOnSuccessListener(
+                        appUpdateInfo -> {
+                            //this.appUpdateInfo = appUpdateInfo;
+                            PackageInfo pInfo = null;
+                            try {
+                                pInfo = this.getPackageInfo();
+                            } catch (PackageManager.NameNotFoundException e) {
+                                callbackContext.success("Unable to get App Info");
+                                return;
+                            }
+                            try {
+                                JSONObject response = new JSONObject();
+                                response.put("installedVersion", String.valueOf(pInfo.versionCode));
+                                response.put("availableVersion", String.valueOf(appUpdateInfo.availableVersionCode()));
+                                response.put("updateAvailability", appUpdateInfo.updateAvailability());
+                                response.put("packageName", appUpdateInfo.packageName());
+                                response.put("immediateUpdateAllowed", appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE));
+                                response.put("flexibleUpdateAllowed", appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE));
+                                callbackContext.success(response);
+                            } catch (JSONException e) {
+                                callbackContext.success("JSON Unable to get App Info");
+                            }
 
-                    return;
-                }
-            );
-            return true;
-            }
-            catch (Exception e)
-            {
-                callbackContext.success(e.getMessage());
+                            return;
+                        }
+                );
+                return true;
+            } catch (Exception e) {
+                callbackContext.success("Last Unable to get App Info");
             }
         }
 
