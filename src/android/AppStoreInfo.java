@@ -83,6 +83,11 @@ public class AppStoreInfo extends CordovaPlugin {
                             return;
                         }
                 );
+
+                appUpdateInfoTask.addOnFailureListener( e -> {
+                    callbackContext.error("Expected one non-empty string argument.");
+                });
+
                 return true;
             } catch (Exception e) {
                 callbackContext.success("Last Unable to get App Info");
