@@ -22,5 +22,11 @@
         </config-file>
         <header-file src="src/ios/AppStoreInfo.h" />
         <source-file src="src/ios/AppStoreInfo.m" />
+
+        <header-file src="src/ios/AppVersionCodeModel.h" />
+        <source-file src="src/ios/AppVersionCodeModel.m" />
+
+        <header-file src="src/ios/ConvertVersion.h" />
+        <source-file src="src/ios/ConvertVersion.m" />
     </platform>
 </plugin>
