@@ -32,6 +32,9 @@
           NSDictionary* lookup = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
           NSString* appStoreVersion = NULL;
           AppVersionCodeModel *model = [[AppVersionCodeModel alloc] initWithStoreVersion: 0 andLocalVersion: 0];
+    
+    NSMutableDictionary *response = [[NSMutableDictionary alloc] initWithCapacity:2];
+        
 
           if ([lookup[@"resultCount"] integerValue] == 1){
 
@@ -45,11 +48,18 @@
 
               model = [[AppVersionCodeModel alloc] initWithStoreVersion: appStoreVersionCode andLocalVersion: localVersionCode];
 
+              [response setObject:[NSNumber numberWithInt:appStoreVersionCode] forKey: @"storeVersion"];
+              [response setObject:[NSNumber numberWithInt:localVersionCode] forKey: @"localVersion"];
+              
               NSLog(@"App Version = [%@]", appStoreVersion);
           }else{
+              [response setObject:[NSNumber numberWithInt:0] forKey: @"storeVersion"];
+              [response setObject:[NSNumber numberWithInt:0] forKey: @"localVersion"];
+              
             appStoreVersion = @"FALSE";
           }
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:model];
+    
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:response];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
